@@ -1,0 +1,15 @@
+version: "3"
+services:
+  green-test:
+    container_name: green-test
+    build:
+      context: .
+      dockerfile: Dockerfile.srt2rtmp
+      # reference docker target
+    entrypoint: 
+      - /root/srt2rtmp.py
+      - ${SRT_URL}
+      - ${RTMP_URL}
+    restart: unless-stopped
+    ports:
+      - 1234:1234
